@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Landing Page de Produto incrível para capturar leads e gerar vendas.">
+  <title>Produto X - Sua Solução</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Produto X - Sua Solução">
+  <meta property="og:description" content="Transforme sua vida com o Produto X.">
+  <meta property="og:image" content="https://picsum.photos/1200/630.webp">
+  <meta property="og:url" content="https://seudominio.com/produto-x">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <!-- Botão de Login no canto superior esquerdo -->
+      <div class="login-btn">
+        <a href="login.html" class="cta-login">👨 Login</a>
+      </div>
+
+      <h1 class="logo">Produto X</h1>
+      <ul class="menu">
+        <li><a href="#beneficios">Benefícios</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#preco">Preço</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <button class="cta" onclick="scrollToForm()">Garanta já o seu!</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Transforme sua vida com o Produto X</h2>
+        <p>A solução definitiva para [problema que resolve].</p>
+        <button class="cta" onclick="scrollToForm()">Quero experimentar!</button>
+      </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section id="beneficios" class="container">
+      <h3>Por que escolher o Produto X?</h3>
+      <div class="cards">
+        <div class="card">✔ Economia de tempo no dia a dia</div>
+        <div class="card">✔ Interface simples e intuitiva</div>
+        <div class="card">✔ Suporte 24/7 com especialistas</div>
+        <div class="card">✔ Atualizações automáticas e gratuitas</div>
+        <div class="card">✔ Compatibilidade com múltiplos dispositivos</div>
+      </div>
+      <a href="beneficios.html" class="cta">Ver todos os benefícios</a>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos" class="container">
+      <h3>O que nossos clientes dizem</h3>
+      <div class="depoimentos-list">
+        <blockquote>"Produto X mudou minha rotina completamente!" - Maria</blockquote>
+        <blockquote>"Simples, prático e eficiente." - João</blockquote>
+        <blockquote>"A melhor decisão que já tomei para meu negócio." - Carla</blockquote>
+        <blockquote>"Economizei tempo e dinheiro com o Produto X." - Pedro</blockquote>
+      </div>
+      <button class="cta" onclick="scrollToForm()">Quero ser o próximo!</button>
+    </section>
+
+    <!-- Preço + Urgência -->
+    <section id="preco" class="container">
+      <h3>Oferta Especial</h3>
+      <p class="preco">Apenas R$ 99,90</p>
+      <div class="urgencia">
+        <p><strong>Estoque limitado:</strong> apenas <span id="estoque">25</span> unidades restantes!</p>
+        <p><strong>Promoção termina em:</strong> <span id="contador"></span></p>
+      </div>
+      <button class="cta" onclick="scrollToForm()">Comprar Agora</button>
+    </section>
+
+    <!-- Estatísticas simuladas (como se viessem do banco de dados) -->
+    <section id="estatisticas" class="container">
+      <h3>Nossos números</h3>
+      <div class="stats">
+        <div class="stat">
+          <h4>+10.000</h4>
+          <p>Clientes satisfeitos</p>
+        </div>
+        <div class="stat">
+          <h4>95%</h4>
+          <p>Taxa de recomendação</p>
+        </div>
+        <div class="stat">
+          <h4>+50</h4>
+          <p>Países atendidos</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulário -->
+    <section id="contato" class="container">
+      <h3>Cadastre-se para receber novidades</h3>
+      <form>
+        <input type="text" placeholder="Seu nome" required>
+        <input type="email" placeholder="Seu email" required>
+        <button type="submit" class="cta">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Produto X. Todos os direitos reservados.</p>
+    <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+  </footer>
+
+  <script>
+    function scrollToForm() {
+      document.getElementById("contato").scrollIntoView({behavior: "smooth"});
+    }
+
+    // Contagem regressiva (urgência)
+    function iniciarContagem() {
+      const fim = new Date();
+      fim.setHours(fim.getHours() + 1); // 1 hora de promoção
+      const contador = document.getElementById("contador");
+
+      function atualizar() {
+        const agora = new Date();
+        const diff = fim - agora;
+
+        if (diff <= 0) {
+          contador.innerHTML = "Promoção encerrada!";
+          return;
+        }
+
+        const minutos = Math.floor((diff / 1000 / 60) % 60);
+        const segundos = Math.floor((diff / 1000) % 60);
+        contador.innerHTML = `${minutos}m ${segundos}s`;
+        setTimeout(atualizar, 1000);
+      }
+      atualizar();
+    }
+    iniciarContagem();
+  </script>
+</body>
+</html>
